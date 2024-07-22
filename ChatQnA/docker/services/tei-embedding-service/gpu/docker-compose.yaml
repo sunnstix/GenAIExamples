@@ -1,0 +1,22 @@
+services:
+  tei-embedding-service:
+    image: ghcr.io/huggingface/text-embeddings-inference:1.2
+    container_name: tei-embedding-server
+    ports:
+      - "8090:80"
+    volumes:
+      - "./data:/data"
+    shm_size: 1g
+    ipc: host
+    environment:
+      no_proxy: ${no_proxy}
+      http_proxy: ${http_proxy}
+      https_proxy: ${https_proxy}
+    command: --model-id ${EMBEDDING_MODEL_ID}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

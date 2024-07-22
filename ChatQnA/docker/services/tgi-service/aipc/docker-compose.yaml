@@ -1,5 +1,5 @@
 services:
-  tei-reranking-service:
+  tgi-service:
     extends:
       file: ../common/docker-compose.yaml
-      service: tei-reranking-service
+      service: tgi-service

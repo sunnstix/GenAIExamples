@@ -1,0 +1,5 @@
+services:
+  tei-embedding-service:
+    extends:
+      file: ../xeon/docker-compose.yaml
+      service: tei-embedding-service
