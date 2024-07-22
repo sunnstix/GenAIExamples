@@ -1,0 +1,5 @@
+services:
+  tgi-service:
+    extends:
+      file: ../common/docker-compose.yaml
+      service: tgi-service

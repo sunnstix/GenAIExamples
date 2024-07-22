@@ -30,16 +30,20 @@ function build_docker_images() {
 }
 
 function start_services() {
-    cd $WORKPATH/docker/xeon
+    cd $WORKPATH/docker/
 
+    export HARDWARE="xeon"
     export EMBEDDING_MODEL_ID="BAAI/bge-base-en-v1.5"
     export RERANK_MODEL_ID="BAAI/bge-reranker-base"
     export LLM_MODEL_ID="Intel/neural-chat-7b-v3-3"
     export TEI_EMBEDDING_ENDPOINT="http://${ip_address}:6006"
     export TEI_RERANKING_ENDPOINT="http://${ip_address}:8808"
     export TGI_LLM_ENDPOINT="http://${ip_address}:9009"
+
+    export DATA_SERVICE="redis"
     export REDIS_URL="redis://${ip_address}:6379"
     export INDEX_NAME="rag-redis"
+
     export HUGGINGFACEHUB_API_TOKEN=${HUGGINGFACEHUB_API_TOKEN}
     export MEGA_SERVICE_HOST_IP=${ip_address}
     export EMBEDDING_SERVICE_HOST_IP=${ip_address}
